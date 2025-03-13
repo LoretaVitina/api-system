@@ -7,6 +7,7 @@ from .models import Delivery
 from .serializer import DeliverySerializer
 
 
+# šo mums nevajag, jo mums nekur nevajag parādīt visas piegādes
 @api_view(['GET'])
 def get_delivery(request):
     return Response(DeliverySerializer(Delivery.objects.all(), many=True).data)
