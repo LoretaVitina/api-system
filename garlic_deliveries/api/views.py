@@ -20,6 +20,7 @@ def create_delivery(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# šeit vajag atgriezt tikai statusu; jāizveido jauns serializeris
 @api_view(['GET'])
 def get_delivery_by_id(request, warhouse_id):
     try:
