@@ -14,11 +14,16 @@ class DeliverySerializer(serializers.ModelSerializer):
 
 # vēl vienu serializeri vajadzēs, lai izveidotu, ka parāda tikai statusu (varbūt arī updated_at)
 class DeliveryStatusSerializer(serializers.ModelSerializer):
+    status = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
 
     class Meta:
         model = Delivery
         fields = ['status', 'updated_at']
+
+    def get_status(self, obj):
+        # Return the human-readable status
+        return dict(Delivery.STATUS_CHOICES).get(obj.status, obj.status)
 
     def get_updated_at(self, obj):
         if obj.updated_at:
