@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 from django.db.models import Count
-from django.utils import formats
+from django.utils import formats, timezone
 from django.utils.formats import date_format
 
 from .models import Delivery
@@ -58,12 +58,16 @@ class DeliveryAdmin(admin.ModelAdmin):
     ordering = ('status', '-created_at')
 
     def get_created_at(self, obj):
-        return date_format(obj.created_at, format="Y. \\g\\a\\d\\a j. F, H:i")
+        # Convert UTC time to local time (Riga)
+        local_time = timezone.localtime(obj.created_at)
+        return date_format(local_time, format="Y. \\g\\a\\d\\a j. F, H:i")
     get_created_at.admin_order_field = 'created_at'
     get_created_at.short_description = 'Izveidots'
 
     def get_updated_at(self, obj):
-        return date_format(obj.updated_at, format="Y. \\g\\a\\d\\a j. F, H:i")
+        # Convert UTC time to local time (Riga)
+        local_time = timezone.localtime(obj.updated_at)
+        return date_format(local_time, format="Y. \\g\\a\\d\\a j. F, H:i")
     get_updated_at.admin_order_field = 'updated_at'
     get_updated_at.short_description = 'Atjaunināts'
 
