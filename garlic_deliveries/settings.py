@@ -9,7 +9,7 @@ DATABASES = {
     }
 } 
 
-STATUS_UPDATE_ENDPOINT = 'https://webhook.site/your-unique-url'  # Replace with your webhook.site URL
+STATUS_UPDATE_ENDPOINT = 'https://httpbin.org/post'  # Replace with your webhook.site URL
 
-# Replace the API_KEY with WAREHOUSE_PASSWORD
-WAREHOUSE_PASSWORD = 'drosa-api_sazina'  # Replace with actual secure password
+# Warehousepassword
+WAREHOUSE_PASSWORD = 'drosa-api-sazina'  # Replace with actual secure password

@@ -15,9 +15,9 @@ def get_delivery(request):
 
 @api_view(['POST'])
 def create_delivery(request):
-    # Check for password in Authorization header
+    # Check for password in Authorization header without 'Basic' prefix
     auth_header = request.headers.get('Authorization')
-    if not auth_header or auth_header != f'Basic {settings.WAREHOUSE_PASSWORD}':
+    if not auth_header or auth_header != settings.WAREHOUSE_PASSWORD:
         return Response(
             {"error": "Invalid credentials"}, 
             status=status.HTTP_401_UNAUTHORIZED
