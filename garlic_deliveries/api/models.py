@@ -28,4 +28,9 @@ class Delivery(models.Model):
     def get_updated_at(self):
         return self.updated_at
     
+    class Meta:
+        permissions = [
+            ("change_delivery_status", "Can change delivery status"),
+        ]
+    
     

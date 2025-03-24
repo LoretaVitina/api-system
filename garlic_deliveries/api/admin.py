@@ -41,15 +41,24 @@ class DeliveryAdmin(admin.ModelAdmin):
     get_updated_at.admin_order_field = 'updated_at'
     get_updated_at.short_description = 'Atjaunināts'
 
+    def get_queryset(self, request):
+        # Allow all deliveries to be visible
+        return super().get_queryset(request)
+
     def has_change_permission(self, request, obj=None):
-        if obj is None:
-            return False
+        # Check for our custom permission instead of the default Django permission
+        return request.user.has_perm('api.change_delivery_status')
+
+    def has_view_permission(self, request, obj=None):
+        # Also allow viewing if they have the status change permission
         return request.user.has_perm('api.change_delivery_status')
 
     def has_add_permission(self, request):
+        # Optionally, restrict adding new deliveries
         return False
 
     def has_delete_permission(self, request, obj=None):
+        # Optionally, restrict deleting deliveries
         return False
 
 
