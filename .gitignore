@@ -1,5 +1,5 @@
 # Ignore the actual settings file
-garlic_deliveries/garlic_deliveries/settings.py
+ebusiness/garlic_deliveries/settings.py
 
 # Python
 *.pyc
