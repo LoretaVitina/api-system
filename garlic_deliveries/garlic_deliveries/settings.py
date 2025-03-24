@@ -135,4 +135,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 WAREHOUSE_PASSWORD = 'drosa-api-sazina'  # Replace with your actual password
 
-STATUS_UPDATE_ENDPOINT = 'http://localhost:8080/status-update/HMK'  # Replace with actual endpoint
+STATUS_UPDATE_ENDPOINT = 'http://localhost:8080/status-update'  # Replace with actual endpoint
