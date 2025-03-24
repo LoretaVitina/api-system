@@ -3,14 +3,14 @@ from django.db import models
 
 class Delivery(models.Model):
     STATUS_CHOICES = (
-        ('pending', 'Pending'),
-        ('processing', 'Processing'),
-        ('shipped', 'Shipped'),
-        ('delivered', 'Delivered'),
-        ('cancelled', 'Cancelled')
+        ('pending', 'Gaida piegādes apstiprināšanu'),
+        ('processing', 'Apstrādē pie piegādātāja'),
+        ('shipped', 'Tiek piegādāts'),
+        ('delivered', 'Piegādāts'),
+        ('cancelled', 'Piegāde atcelta')
     )
     
-    warhouse_id = models.CharField(max_length=100, null=False, unique=True, blank=False)
+    delivery_id_from_warehouse = models.CharField(max_length=100, null=False, unique=True, blank=False)
     name = models.CharField(max_length=100, null=False, blank=False)
     surname = models.CharField(max_length=100, null=False, blank=False)
     # nezinu, vai būs e-pasts, bet to ir viegli noņemt

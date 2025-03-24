@@ -9,5 +9,5 @@ urlpatterns = [
     path('delivery/create', create_delivery, name='create_delivery'),
     # šis mums būs priekš front-end, lai klients var meklēt pēc ID (ne mūsu datubāzes ID)
     # sliktākajā gadījumā warehouse var šo izmantot un ik pa laikam sūtīt pieprasījumus, bet tā parasti nedara
-    path('delivery/<str:warhouse_id>', get_delivery_by_id, name='get_delivery_by_id'),
+    path('delivery/<str:delivery_id_from_warehouse>', get_delivery_by_id, name='get_delivery_by_id'),
 ]

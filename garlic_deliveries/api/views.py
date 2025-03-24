@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import Delivery
-from .serializer import DeliverySerializer
+from .serializer import DeliverySerializer, DeliveryStatusSerializer
 
 
 # šo mums nevajag, jo mums nekur nevajag parādīt visas piegādes
@@ -22,9 +22,9 @@ def create_delivery(request):
 
 # šeit vajag atgriezt tikai statusu; jāizveido jauns serializeris
 @api_view(['GET'])
-def get_delivery_by_id(request, warhouse_id):
+def get_delivery_by_id(request, delivery_id_from_warehouse):
     try:
-        delivery = Delivery.objects.get(warhouse_id=warhouse_id)
+        delivery = Delivery.objects.get(delivery_id_from_warehouse=delivery_id_from_warehouse)
     except Delivery.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    return Response(DeliverySerializer(delivery).data)
+    return Response(DeliveryStatusSerializer(delivery).data)
