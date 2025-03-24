@@ -1,0 +1,13 @@
+# Ignore the actual settings file
+garlic_deliveries/garlic_deliveries/settings.py
+
+# Python
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+db.sqlite3
+media/ 
