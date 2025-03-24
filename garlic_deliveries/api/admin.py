@@ -54,7 +54,7 @@ class DeliveryAdmin(admin.ModelAdmin):
     list_display = ('delivery_id_from_warehouse', 'name', 'surname', 'e_mail', 'address', 'status', 'get_created_at', 'get_updated_at')
     list_filter = (DeliveryStatusFilter,)
     search_fields = ('delivery_id_from_warehouse', 'name', 'surname', 'e_mail', 'address')
-    readonly_fields = ('delivery_id_from_warehouse', 'name', 'surname', 'e_mail', 'address', 'type_amount', 'created_at', 'updated_at')
+    readonly_fields = ('delivery_id_from_warehouse', 'name', 'surname', 'e_mail', 'address', 'created_at', 'updated_at')
     ordering = ('status', '-created_at')
 
     def get_created_at(self, obj):

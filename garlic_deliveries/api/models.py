@@ -19,8 +19,8 @@ class Delivery(models.Model):
     surname = models.CharField(max_length=100, null=False, blank=False)
     # nezinu, vai būs e-pasts, bet to ir viegli noņemt
     e_mail = models.EmailField(max_length=100, null=False, blank=False)
-    # ja problēma ieviest json, tad relācija uz citu modeli
-    type_amount = models.JSONField(default=list)
+    # # ja problēma ieviest json, tad relācija uz citu modeli
+    # type_amount = models.JSONField(default=list)
     address = models.CharField(max_length=255, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
