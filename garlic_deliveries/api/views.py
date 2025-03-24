@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -14,6 +15,14 @@ def get_delivery(request):
 
 @api_view(['POST'])
 def create_delivery(request):
+    # Check for password in Authorization header
+    auth_header = request.headers.get('Authorization')
+    if not auth_header or auth_header != f'Basic {settings.WAREHOUSE_PASSWORD}':
+        return Response(
+            {"error": "Invalid credentials"}, 
+            status=status.HTTP_401_UNAUTHORIZED
+        )
+
     serializer = DeliverySerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
